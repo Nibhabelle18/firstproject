@@ -5,9 +5,7 @@ import org.sony.project.firstproject.entity.StudentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +34,16 @@ public class MainController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+    }
+    @PostMapping("/msg2")
+    public ResponseEntity<String> f3(@RequestBody StudentEntity s){
+        try{
+            obj.save(s);
+            return new ResponseEntity<>("inserted", HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
